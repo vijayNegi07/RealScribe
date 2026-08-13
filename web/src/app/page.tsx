@@ -11,7 +11,7 @@ export default function Home() {
   const [fullTranscript, setFullTranscript] = useState("");
 
   const[summary, setSummary] = useState("");
-  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [loadingSummary ,setLoadingSummary] = useState(false);
 
   const socketRef = useRef<WebSocket | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
@@ -179,7 +179,7 @@ export default function Home() {
       
       return
     }
-    setLoadingSuggestions(true);
+    setLoadingSummary(true);
     try {
       const response = await fetch("/api/generate-summary", {
       method: "POST",
@@ -203,7 +203,7 @@ export default function Home() {
       console.log("Error while fetching suggestion ", error);
       
     }finally{
-      setLoadingSuggestions(false);
+      setLoadingSummary(false);
     }
   }
 
@@ -270,8 +270,8 @@ export default function Home() {
         <button onClick={()=>{setTranscripts([]); setInterimTranscript("") }}
          className="bg-white text-xl p-2 mr-3 text-black rounded-2xl hover:bg-gray-400">Reset</button>
         {
-          !loadingSuggestions ? (<button onClick={generateSuggestions}  className="bg-white text-xl p-2 mr-3 text-black rounded-2xl hover:bg-gray-400">Generate Summary</button>)
-          :(<button disabled={loadingSuggestions} className="bg-white text-xl p-2 mr-3 text-black rounded-2xl hover:bg-gray-400">Generating Summary...</button>)
+          !loadingSummary ? (<button onClick={generateSuggestions}  className="bg-white text-xl p-2 mr-3 text-black rounded-2xl hover:bg-gray-400">Generate Summary</button>)
+          :(<button disabled={loadingSummary} className="bg-white text-xl p-2 mr-3 text-black rounded-2xl hover:bg-gray-400">Generating Summary...</button>)
         }
       </div>
       <div className="h-32 overflow-y-auto rounded-lg border border-gray-700 p-4 mt-2">
