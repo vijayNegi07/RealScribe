@@ -10,10 +10,15 @@
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.43",
+    "@hookform/resolvers": "^5.8.0",
     "ai": "^7.0.65",
+    "better-auth": "^1.6.28",
+    "mongoose": "^9.9.2",
     "next": "16.3.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7.85.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
