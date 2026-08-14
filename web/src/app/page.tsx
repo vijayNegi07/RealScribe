@@ -4,8 +4,6 @@ import { useState, useRef, useEffect } from "react";
 
 export default function Home() {
   const[isRecording, setIsRecording] = useState(false);
-  const[stream, setStream] = useState<MediaStream | null>(null);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [transcripts, setTranscripts] = useState<string[]>([]);
   const [interimTranscript, setInterimTranscript] = useState("");
   const [fullTranscript, setFullTranscript] = useState("");
@@ -48,9 +46,6 @@ export default function Home() {
 };
 
   const startRecording = async() =>{
-    
-    //actual microphone service one 
-    //starts recording
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         audio:true
@@ -144,10 +139,6 @@ export default function Home() {
   }
 
   const stopMicrophone = async() => {
-    console.log(fullTranscript);
-    console.log(transcripts);
-    
-    
     // Stop MediaRecorder
     recorderRef.current?.stop();
 
